@@ -1,4 +1,6 @@
+var linkedin = require('./config/linkedin');
 var app = require('express')();
+
 
 require('./config/express')(app);
 require('./config/routes')(app);

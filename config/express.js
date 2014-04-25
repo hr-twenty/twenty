@@ -1,11 +1,12 @@
+/* global require, module */
 var path = require('path');
+var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-
-var express = require('express');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var env = require('./env');
-console.log('envType', env.envType);
 
 module.exports = function(app) {
   app.set('port', env.port);
@@ -15,5 +16,8 @@ module.exports = function(app) {
 
   app.use(bodyParser());
   app.use(methodOverride());
+
+  app.use(cookieParser());
+  app.use(session({ secret: 'my secret' }));
 };
 
